@@ -14,5 +14,9 @@ __pycache__/
 # Large hidden-state caches: commit JSON summaries + outputs.jsonl, never npz
 *.npz
 
+# Derived intermediates carry full BFCL item data; only summaries+outputs committed
+results/toolfabrication/h1_queries*.json
+results/toolfabrication/h1_labels.json
+
 # tmux launcher run logs (written inside the repo dir on the persistent FS)
 /runlogs/
