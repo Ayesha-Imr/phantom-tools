@@ -1,0 +1,18 @@
+# BEGIN repo bootstrapper managed entries
+# Agent instructions and project-local working notes are intentionally private.
+/AGENTS.md
+/local/
+# Inherited skills are supplied by the parent bootstrapper.
+/.agents/skills
+/.agent/skills
+# END repo bootstrapper managed entries
+
+# Python
+__pycache__/
+*.pyc
+
+# Large hidden-state caches: commit JSON summaries + outputs.jsonl, never npz
+*.npz
+
+# tmux launcher run logs (written inside the repo dir on the persistent FS)
+/runlogs/

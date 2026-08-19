@@ -1,0 +1,7 @@
+# Floor-pinned deps (torch/torchvision are installed separately by
+# infra/lambda/pod-env/bootstrap_pod.sh against the pinned CUDA wheel index).
+transformers>=4.57.0
+accelerate>=0.33.0
+scikit-learn>=1.5.0
+huggingface_hub>=0.25.0
+numpy>=1.26.0
