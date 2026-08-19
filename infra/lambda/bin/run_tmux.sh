@@ -141,8 +141,10 @@ if [ -d "$REMOTE_REPO_DIR/.git" ] && [ -e "$REMOTE_REPO_DIR/.git/HEAD" ]; then
     git checkout "$BRANCH"
     # A persistent filesystem can retain pod-local WIP from an interrupted run.
     # Preserve it before syncing; never make the next run fail or discard it.
-    if ! git diff --quiet || [ -n "$(git status --porcelain --untracked-files=all)" ]; then
-        git stash push --include-untracked -m "pre-run pod WIP $(date -u +%Y%m%dT%H%M%SZ)"
+    # NB: the command substitutions are escaped so they evaluate ON the pod
+    # (the heredoc is unquoted and would otherwise run them locally).
+    if ! git diff --quiet || [ -n "\$(git status --porcelain --untracked-files=all)" ]; then
+        git stash push --include-untracked -m "pre-run pod WIP \$(date -u +%Y%m%dT%H%M%SZ)"
     fi
     git pull --ff-only origin "$BRANCH"
 else
